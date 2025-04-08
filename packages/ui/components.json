@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@walgo-hub/ui/components",
+    "utils": "@walgo-hub/ui/lib/utils",
+    "ui": "@walgo-hub/ui/components/ui/",
+    "lib": "@walgo-hub/ui/lib",
+    "hooks": "@walgo-hub/ui/hooks"
+  },
+  "iconLibrary": "lucide"
+}
