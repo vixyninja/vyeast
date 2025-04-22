@@ -1,15 +1,8 @@
-import { cn } from "@/lib/utils";
-import { Skeleton } from "@walgo-hub/ui/components/ui/skeleton";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@walgo-hub/ui/components/ui/table";
+import {cn} from '@/lib/utils';
+import {Skeleton} from '@walgo-hub/ui/components/ui/skeleton';
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@walgo-hub/ui/components/ui/table';
 
-interface DataTableSkeletonProps extends React.ComponentProps<"div"> {
+interface DataTableSkeletonProps extends React.ComponentProps<'div'> {
   columnCount: number;
   rowCount?: number;
   filterCount?: number;
@@ -23,7 +16,7 @@ export function DataTableSkeleton({
   columnCount,
   rowCount = 10,
   filterCount = 0,
-  cellWidths = ["auto"],
+  cellWidths = ['auto'],
   withViewOptions = true,
   withPagination = true,
   shrinkZero = false,
@@ -31,38 +24,35 @@ export function DataTableSkeleton({
   ...props
 }: DataTableSkeletonProps) {
   const cozyCellWidths = Array.from(
-    { length: columnCount },
-    (_, index) => cellWidths[index % cellWidths.length] ?? "auto",
+    {length: columnCount},
+    (_, index) => cellWidths[index % cellWidths.length] ?? 'auto',
   );
 
   return (
-    <div className={cn("flex flex-1 flex-col space-y-4", className)} {...props}>
+    <div className={cn('flex flex-1 flex-col space-y-4', className)} {...props}>
       <div className="flex w-full items-center justify-between gap-2 overflow-auto p-1">
         <div className="flex flex-1 items-center gap-2">
           {filterCount > 0
-            ? Array.from({ length: filterCount }).map((_, i) => (
+            ? Array.from({length: filterCount}).map((_, i) => (
                 <Skeleton key={i} className="h-7 w-[4.5rem] border-dashed" />
               ))
             : null}
         </div>
-        {withViewOptions ? (
-          <Skeleton className="ml-auto hidden h-7 w-[4.5rem] lg:flex" />
-        ) : null}
+        {withViewOptions ? <Skeleton className="ml-auto hidden h-7 w-[4.5rem] lg:flex" /> : null}
       </div>
 
       <div className="flex-1 rounded-md border">
         <Table>
           <TableHeader>
-            {Array.from({ length: 1 }).map((_, i) => (
+            {Array.from({length: 1}).map((_, i) => (
               <TableRow key={i} className="hover:bg-transparent">
-                {Array.from({ length: columnCount }).map((_, j) => (
+                {Array.from({length: columnCount}).map((_, j) => (
                   <TableHead
                     key={j}
                     style={{
                       width: cozyCellWidths[j],
-                      minWidth: shrinkZero ? cozyCellWidths[j] : "auto",
-                    }}
-                  >
+                      minWidth: shrinkZero ? cozyCellWidths[j] : 'auto',
+                    }}>
                     <Skeleton className="h-6 w-full" />
                   </TableHead>
                 ))}
@@ -70,16 +60,15 @@ export function DataTableSkeleton({
             ))}
           </TableHeader>
           <TableBody>
-            {Array.from({ length: rowCount }).map((_, i) => (
+            {Array.from({length: rowCount}).map((_, i) => (
               <TableRow key={i} className="hover:bg-transparent">
-                {Array.from({ length: columnCount }).map((_, j) => (
+                {Array.from({length: columnCount}).map((_, j) => (
                   <TableCell
                     key={j}
                     style={{
                       width: cozyCellWidths[j],
-                      minWidth: shrinkZero ? cozyCellWidths[j] : "auto",
-                    }}
-                  >
+                      minWidth: shrinkZero ? cozyCellWidths[j] : 'auto',
+                    }}>
                     <Skeleton className="h-6 w-full" />
                   </TableCell>
                 ))}

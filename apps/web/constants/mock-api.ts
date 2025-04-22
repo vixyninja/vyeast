@@ -2,11 +2,10 @@
 // 🛑 Nothing in here has anything to do with Nextjs, it's just a fake database
 ////////////////////////////////////////////////////////////////////////////////
 
-import { faker } from '@faker-js/faker';
-import { matchSorter } from 'match-sorter'; // For filtering
+import {faker} from '@faker-js/faker';
+import {matchSorter} from 'match-sorter'; // For filtering
 
-export const delay = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Define the shape of Product data
 export type Product = {
@@ -43,10 +42,8 @@ export const fakeProducts = {
         id,
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
-        created_at: faker.date
-          .between({ from: '2022-01-01', to: '2023-12-31' })
-          .toISOString(),
-        price: parseFloat(faker.commerce.price({ min: 5, max: 500, dec: 2 })),
+        created_at: faker.date.between({from: '2022-01-01', to: '2023-12-31'}).toISOString(),
+        price: parseFloat(faker.commerce.price({min: 5, max: 500, dec: 2})),
         photo_url: `https://api.slingacademy.com/public/sample-products/${id}.png`,
         category: faker.helpers.arrayElement(categories),
         updated_at: faker.date.recent().toISOString(),
@@ -62,20 +59,12 @@ export const fakeProducts = {
   },
 
   // Get all products with optional category filtering and search
-  async getAll({
-    categories = [],
-    search,
-  }: {
-    categories?: string[];
-    search?: string;
-  }) {
+  async getAll({categories = [], search}: {categories?: string[]; search?: string}) {
     let products = [...this.records];
 
     // Filter products based on selected categories
     if (categories.length > 0) {
-      products = products.filter((product) =>
-        categories.includes(product.category),
-      );
+      products = products.filter((product) => categories.includes(product.category));
     }
 
     // Search functionality across multiple fields

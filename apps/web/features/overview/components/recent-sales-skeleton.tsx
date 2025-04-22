@@ -1,9 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@walgo-hub/ui/components/ui/card";
-import { Skeleton } from "@walgo-hub/ui/components/ui/skeleton";
+import {Card, CardContent, CardHeader} from '@walgo-hub/ui/components/ui/card';
+import {Skeleton} from '@walgo-hub/ui/components/ui/skeleton';
 
 export function RecentSalesSkeleton() {
   return (
@@ -14,7 +10,7 @@ export function RecentSalesSkeleton() {
       </CardHeader>
       <CardContent>
         <div className="space-y-8">
-          {Array.from({ length: 5 }).map((_, i) => (
+          {Array.from({length: 5}).map((_, i) => (
             <div key={i} className="flex items-center">
               <Skeleton className="h-9 w-9 rounded-full" /> {/* Avatar */}
               <div className="ml-4 space-y-1">

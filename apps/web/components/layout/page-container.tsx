@@ -1,5 +1,5 @@
-import { ScrollArea } from "@walgo-hub/ui/components/ui/scroll-area";
-import React from "react";
+import {ScrollArea} from '@walgo-hub/ui/components/ui/scroll-area';
+import React from 'react';
 
 export default function PageContainer({
   children,

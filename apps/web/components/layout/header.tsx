@@ -1,11 +1,11 @@
-import { Separator } from "@walgo-hub/ui/components/ui/separator";
-import { SidebarTrigger } from "@walgo-hub/ui/components/ui/sidebar";
-import { Breadcrumbs } from "../breadcrumbs";
-import SearchInput from "../search-input";
-import { ThemeSelector } from "../theme-selector";
-import { ModeToggle } from "./ThemeToggle/theme-toggle";
-import CtaGithub from "./cta-github";
-import { UserNav } from "./user-nav";
+import {Separator} from '@walgo-hub/ui/components/ui/separator';
+import {SidebarTrigger} from '@walgo-hub/ui/components/ui/sidebar';
+import {Breadcrumbs} from '../breadcrumbs';
+import SearchInput from '../search-input';
+import {ThemeSelector} from '../theme-selector';
+import {ModeToggle} from './ThemeToggle/theme-toggle';
+import CtaGithub from './cta-github';
+import {UserNav} from './user-nav';
 
 export default function Header() {
   return (

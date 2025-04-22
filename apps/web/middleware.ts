@@ -5,7 +5,7 @@
 import NextAuth from 'next-auth';
 import authConfig from '@/lib/auth.config';
 
-const { auth } = NextAuth(authConfig);
+const {auth} = NextAuth(authConfig);
 
 export default auth((req) => {
   if (!req.auth) {
@@ -14,4 +14,4 @@ export default auth((req) => {
   }
 });
 
-export const config = { matcher: ['/dashboard/:path*'] };
+export const config = {matcher: ['/dashboard/:path*']};

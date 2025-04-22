@@ -1,50 +1,32 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { IconAlertTriangle, IconTrash } from "@tabler/icons-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@walgo-hub/ui/components/ui/accordion";
-import { Button } from "@walgo-hub/ui/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@walgo-hub/ui/components/ui/form";
-import { Heading } from "@walgo-hub/ui/components/ui/heading";
-import { Input } from "@walgo-hub/ui/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@walgo-hub/ui/components/ui/select";
-import { Separator } from "@walgo-hub/ui/components/ui/separator";
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
-import { profileSchema, type ProfileFormValues } from "../utils/form-schema";
+'use client';
+import {cn} from '@/lib/utils';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {IconAlertTriangle, IconTrash} from '@tabler/icons-react';
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from '@walgo-hub/ui/components/ui/accordion';
+import {Button} from '@walgo-hub/ui/components/ui/button';
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from '@walgo-hub/ui/components/ui/form';
+import {Heading} from '@walgo-hub/ui/components/ui/heading';
+import {Input} from '@walgo-hub/ui/components/ui/input';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@walgo-hub/ui/components/ui/select';
+import {Separator} from '@walgo-hub/ui/components/ui/separator';
+import {useParams, useRouter} from 'next/navigation';
+import {useState} from 'react';
+import {SubmitHandler, useFieldArray, useForm} from 'react-hook-form';
+import {profileSchema, type ProfileFormValues} from '../utils/form-schema';
 
 interface ProfileFormType {
   initialData: any | null;
 }
 
-const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
+const ProfileCreateForm: React.FC<ProfileFormType> = ({initialData}) => {
   const params = useParams();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const title = initialData ? "Edit product" : "Create Your Profile";
+  const title = initialData ? 'Edit product' : 'Create Your Profile';
   const description = initialData
-    ? "Edit a product."
-    : "To create your resume, we first need some basic information about you.";
+    ? 'Edit a product.'
+    : 'To create your resume, we first need some basic information about you.';
   const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const [data, setData] = useState({});
@@ -52,12 +34,12 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
   const defaultValues = {
     jobs: [
       {
-        jobtitle: "",
-        employer: "",
-        startdate: "",
-        enddate: "",
-        jobcountry: "",
-        jobcity: "",
+        jobtitle: '',
+        employer: '',
+        startdate: '',
+        enddate: '',
+        jobcountry: '',
+        jobcity: '',
       },
     ],
   };
@@ -65,17 +47,17 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
     defaultValues,
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const {
     control,
-    formState: { errors },
+    formState: {errors},
   } = form;
 
-  const { append, remove, fields } = useFieldArray({
+  const {append, remove, fields} = useFieldArray({
     control,
-    name: "jobs",
+    name: 'jobs',
   });
 
   const processForm: SubmitHandler<ProfileFormValues> = (data) => {
@@ -89,20 +71,13 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
 
   const steps = [
     {
-      id: "Step 1",
-      name: "Personal Information",
-      fields: [
-        "firstname",
-        "lastname",
-        "email",
-        "contactno",
-        "country",
-        "city",
-      ],
+      id: 'Step 1',
+      name: 'Personal Information',
+      fields: ['firstname', 'lastname', 'email', 'contactno', 'country', 'city'],
     },
     {
-      id: "Step 2",
-      name: "Professional Informations",
+      id: 'Step 2',
+      name: 'Professional Informations',
       // fields are mapping and flattening for the error to be trigger  for the dynamic fields
       fields: fields
         ?.map((_, index) => [
@@ -116,7 +91,7 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
         ])
         .flat(),
     },
-    { id: "Step 3", name: "Complete" },
+    {id: 'Step 3', name: 'Complete'},
   ];
 
   const next = async () => {
@@ -144,20 +119,15 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
     }
   };
 
-  const countries = [{ id: "wow", name: "india" }];
-  const cities = [{ id: "2", name: "kerala" }];
+  const countries = [{id: 'wow', name: 'india'}];
+  const cities = [{id: '2', name: 'kerala'}];
 
   return (
     <>
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
         {initialData && (
-          <Button
-            disabled={loading}
-            variant="destructive"
-            size="sm"
-            onClick={() => setOpen(true)}
-          >
+          <Button disabled={loading} variant="destructive" size="sm" onClick={() => setOpen(true)}>
             <IconTrash className="h-4 w-4" />
           </Button>
         )}
@@ -169,26 +139,19 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
             <li key={step.name} className="md:flex-1">
               {currentStep > index ? (
                 <div className="group flex w-full flex-col border-l-4 border-sky-600 py-2 pl-4 transition-colors md:border-t-4 md:border-l-0 md:pt-4 md:pb-0 md:pl-0">
-                  <span className="text-sm font-medium text-sky-600 transition-colors">
-                    {step.id}
-                  </span>
+                  <span className="text-sm font-medium text-sky-600 transition-colors">{step.id}</span>
                   <span className="text-sm font-medium">{step.name}</span>
                 </div>
               ) : currentStep === index ? (
                 <div
                   className="flex w-full flex-col border-l-4 border-sky-600 py-2 pl-4 md:border-t-4 md:border-l-0 md:pt-4 md:pb-0 md:pl-0"
-                  aria-current="step"
-                >
-                  <span className="text-sm font-medium text-sky-600">
-                    {step.id}
-                  </span>
+                  aria-current="step">
+                  <span className="text-sm font-medium text-sky-600">{step.id}</span>
                   <span className="text-sm font-medium">{step.name}</span>
                 </div>
               ) : (
                 <div className="group flex h-full w-full flex-col border-l-4 border-gray-200 py-2 pl-4 transition-colors md:border-t-4 md:border-l-0 md:pt-4 md:pb-0 md:pl-0">
-                  <span className="text-sm font-medium text-gray-500 transition-colors">
-                    {step.id}
-                  </span>
+                  <span className="text-sm font-medium text-gray-500 transition-colors">{step.id}</span>
                   <span className="text-sm font-medium">{step.name}</span>
                 </div>
               )}
@@ -198,31 +161,18 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
       </div>
       <Separator />
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(processForm)}
-          className="w-full space-y-8"
-        >
-          <div
-            className={cn(
-              currentStep === 1
-                ? "w-full md:inline-block"
-                : "gap-8 md:grid md:grid-cols-3",
-            )}
-          >
+        <form onSubmit={form.handleSubmit(processForm)} className="w-full space-y-8">
+          <div className={cn(currentStep === 1 ? 'w-full md:inline-block' : 'gap-8 md:grid md:grid-cols-3')}>
             {currentStep === 0 && (
               <>
                 <FormField
                   control={form.control}
                   name="firstname"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>First Name</FormLabel>
                       <FormControl>
-                        <Input
-                          disabled={loading}
-                          placeholder="John"
-                          {...field}
-                        />
+                        <Input disabled={loading} placeholder="John" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -231,15 +181,11 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                 <FormField
                   control={form.control}
                   name="lastname"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>Last Name</FormLabel>
                       <FormControl>
-                        <Input
-                          disabled={loading}
-                          placeholder="Doe"
-                          {...field}
-                        />
+                        <Input disabled={loading} placeholder="Doe" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -248,15 +194,11 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                 <FormField
                   control={form.control}
                   name="email"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input
-                          disabled={loading}
-                          placeholder="johndoe@gmail.com"
-                          {...field}
-                        />
+                        <Input disabled={loading} placeholder="johndoe@gmail.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -265,16 +207,11 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                 <FormField
                   control={form.control}
                   name="contactno"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>Contact Number</FormLabel>
                       <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Enter you contact number"
-                          disabled={loading}
-                          {...field}
-                        />
+                        <Input type="number" placeholder="Enter you contact number" disabled={loading} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -283,21 +220,17 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                 <FormField
                   control={form.control}
                   name="country"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>Country</FormLabel>
                       <Select
                         disabled={loading}
                         onValueChange={field.onChange}
                         value={field.value}
-                        defaultValue={field.value}
-                      >
+                        defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue
-                              defaultValue={field.value}
-                              placeholder="Select a country"
-                            />
+                            <SelectValue defaultValue={field.value} placeholder="Select a country" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -316,21 +249,17 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                 <FormField
                   control={form.control}
                   name="city"
-                  render={({ field }) => (
+                  render={({field}) => (
                     <FormItem>
                       <FormLabel>City</FormLabel>
                       <Select
                         disabled={loading}
                         onValueChange={field.onChange}
                         value={field.value}
-                        defaultValue={field.value}
-                      >
+                        defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue
-                              defaultValue={field.value}
-                              placeholder="Select a city"
-                            />
+                            <SelectValue defaultValue={field.value} placeholder="Select a city" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -351,27 +280,20 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
             {currentStep === 1 && (
               <>
                 {fields?.map((field, index) => (
-                  <Accordion
-                    type="single"
-                    collapsible
-                    defaultValue="item-1"
-                    key={field.id}
-                  >
+                  <Accordion type="single" collapsible defaultValue="item-1" key={field.id}>
                     <AccordionItem value="item-1">
                       <AccordionTrigger
                         className={cn(
-                          "relative no-underline! [&[data-state=closed]>button]:hidden [&[data-state=open]>.alert]:hidden",
-                          errors?.jobs?.[index] && "text-red-700",
-                        )}
-                      >
+                          'relative no-underline! [&[data-state=closed]>button]:hidden [&[data-state=open]>.alert]:hidden',
+                          errors?.jobs?.[index] && 'text-red-700',
+                        )}>
                         {`Work Experience ${index + 1}`}
 
                         <Button
                           variant="outline"
                           size="icon"
                           className="absolute right-8"
-                          onClick={() => remove(index)}
-                        >
+                          onClick={() => remove(index)}>
                           <IconTrash className="h-4 w-4" />
                         </Button>
                         {errors?.jobs?.[index] && (
@@ -381,23 +303,15 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                         )}
                       </AccordionTrigger>
                       <AccordionContent>
-                        <div
-                          className={cn(
-                            "relative mb-4 gap-8 rounded-md border p-4 md:grid md:grid-cols-3",
-                          )}
-                        >
+                        <div className={cn('relative mb-4 gap-8 rounded-md border p-4 md:grid md:grid-cols-3')}>
                           <FormField
                             control={form.control}
                             name={`jobs.${index}.jobtitle`}
-                            render={({ field }) => (
+                            render={({field}) => (
                               <FormItem>
                                 <FormLabel>Job title</FormLabel>
                                 <FormControl>
-                                  <Input
-                                    type="text"
-                                    disabled={loading}
-                                    {...field}
-                                  />
+                                  <Input type="text" disabled={loading} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -406,15 +320,11 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                           <FormField
                             control={form.control}
                             name={`jobs.${index}.employer`}
-                            render={({ field }) => (
+                            render={({field}) => (
                               <FormItem>
                                 <FormLabel>Employer</FormLabel>
                                 <FormControl>
-                                  <Input
-                                    type="text"
-                                    disabled={loading}
-                                    {...field}
-                                  />
+                                  <Input type="text" disabled={loading} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -423,15 +333,11 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                           <FormField
                             control={form.control}
                             name={`jobs.${index}.startdate`}
-                            render={({ field }) => (
+                            render={({field}) => (
                               <FormItem>
                                 <FormLabel>Start date</FormLabel>
                                 <FormControl>
-                                  <Input
-                                    type="date"
-                                    disabled={loading}
-                                    {...field}
-                                  />
+                                  <Input type="date" disabled={loading} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -440,15 +346,11 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                           <FormField
                             control={form.control}
                             name={`jobs.${index}.enddate`}
-                            render={({ field }) => (
+                            render={({field}) => (
                               <FormItem>
                                 <FormLabel>End date</FormLabel>
                                 <FormControl>
-                                  <Input
-                                    type="date"
-                                    disabled={loading}
-                                    {...field}
-                                  />
+                                  <Input type="date" disabled={loading} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -457,29 +359,22 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                           <FormField
                             control={form.control}
                             name={`jobs.${index}.jobcountry`}
-                            render={({ field }) => (
+                            render={({field}) => (
                               <FormItem>
                                 <FormLabel>Job country</FormLabel>
                                 <Select
                                   disabled={loading}
                                   onValueChange={field.onChange}
                                   value={field.value}
-                                  defaultValue={field.value}
-                                >
+                                  defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue
-                                        defaultValue={field.value}
-                                        placeholder="Select your job country"
-                                      />
+                                      <SelectValue defaultValue={field.value} placeholder="Select your job country" />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
                                     {countries.map((country) => (
-                                      <SelectItem
-                                        key={country.id}
-                                        value={country.id}
-                                      >
+                                      <SelectItem key={country.id} value={country.id}>
                                         {country.name}
                                       </SelectItem>
                                     ))}
@@ -492,21 +387,17 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                           <FormField
                             control={form.control}
                             name={`jobs.${index}.jobcity`}
-                            render={({ field }) => (
+                            render={({field}) => (
                               <FormItem>
                                 <FormLabel>Job city</FormLabel>
                                 <Select
                                   disabled={loading}
                                   onValueChange={field.onChange}
                                   value={field.value}
-                                  defaultValue={field.value}
-                                >
+                                  defaultValue={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue
-                                        defaultValue={field.value}
-                                        placeholder="Select your job city"
-                                      />
+                                      <SelectValue defaultValue={field.value} placeholder="Select your job city" />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
@@ -531,18 +422,17 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
                   <Button
                     type="button"
                     className="flex justify-center"
-                    size={"lg"}
+                    size={'lg'}
                     onClick={() =>
                       append({
-                        jobtitle: "",
-                        employer: "",
-                        startdate: "",
-                        enddate: "",
-                        jobcountry: "",
-                        jobcity: "",
+                        jobtitle: '',
+                        employer: '',
+                        startdate: '',
+                        enddate: '',
+                        jobcountry: '',
+                        jobcity: '',
                       })
-                    }
-                  >
+                    }>
                     Add More
                   </Button>
                 </div>
@@ -551,9 +441,7 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
             {currentStep === 2 && (
               <div>
                 <h1>Completed</h1>
-                <pre className="whitespace-pre-wrap">
-                  {JSON.stringify(data)}
-                </pre>
+                <pre className="whitespace-pre-wrap">{JSON.stringify(data)}</pre>
               </div>
             )}
           </div>
@@ -570,42 +458,30 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({ initialData }) => {
             type="button"
             onClick={prev}
             disabled={currentStep === 0}
-            className="rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-xs ring-1 ring-sky-300 ring-inset hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50"
-          >
+            className="rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-xs ring-1 ring-sky-300 ring-inset hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
+              className="h-6 w-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
           <button
             type="button"
             onClick={next}
             disabled={currentStep === steps.length - 1}
-            className="rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-xs ring-1 ring-sky-300 ring-inset hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50"
-          >
+            className="rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-xs ring-1 ring-sky-300 ring-inset hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
+              className="h-6 w-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
         </div>

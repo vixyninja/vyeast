@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,10 +6,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@walgo-hub/ui/components/ui/breadcrumb";
-import { useBreadcrumbs } from "@/hooks/use-breadcrumbs";
-import { IconSlash } from "@tabler/icons-react";
-import { Fragment } from "react";
+} from '@walgo-hub/ui/components/ui/breadcrumb';
+import {useBreadcrumbs} from '@/hooks/use-breadcrumbs';
+import {IconSlash} from '@tabler/icons-react';
+import {Fragment} from 'react';
 
 export function Breadcrumbs() {
   const items = useBreadcrumbs();
@@ -30,9 +30,7 @@ export function Breadcrumbs() {
                 <IconSlash />
               </BreadcrumbSeparator>
             )}
-            {index === items.length - 1 && (
-              <BreadcrumbPage>{item.title}</BreadcrumbPage>
-            )}
+            {index === items.length - 1 && <BreadcrumbPage>{item.title}</BreadcrumbPage>}
           </Fragment>
         ))}
       </BreadcrumbList>

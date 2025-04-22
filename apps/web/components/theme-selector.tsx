@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useThemeConfig } from "@/components/active-theme";
-import { Label } from "@walgo-hub/ui/components/ui/label";
+import {useThemeConfig} from '@/components/active-theme';
+import {Label} from '@walgo-hub/ui/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -11,47 +11,47 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@walgo-hub/ui/components/ui/select";
+} from '@walgo-hub/ui/components/ui/select';
 
 const DEFAULT_THEMES = [
   {
-    name: "Default",
-    value: "default",
+    name: 'Default',
+    value: 'default',
   },
   {
-    name: "Blue",
-    value: "blue",
+    name: 'Blue',
+    value: 'blue',
   },
   {
-    name: "Green",
-    value: "green",
+    name: 'Green',
+    value: 'green',
   },
   {
-    name: "Amber",
-    value: "amber",
+    name: 'Amber',
+    value: 'amber',
   },
 ];
 
 const SCALED_THEMES = [
   {
-    name: "Default",
-    value: "default-scaled",
+    name: 'Default',
+    value: 'default-scaled',
   },
   {
-    name: "Blue",
-    value: "blue-scaled",
+    name: 'Blue',
+    value: 'blue-scaled',
   },
 ];
 
 const MONO_THEMES = [
   {
-    name: "Mono",
-    value: "mono-scaled",
+    name: 'Mono',
+    value: 'mono-scaled',
   },
 ];
 
 export function ThemeSelector() {
-  const { activeTheme, setActiveTheme } = useThemeConfig();
+  const {activeTheme, setActiveTheme} = useThemeConfig();
 
   return (
     <div className="flex items-center gap-2">
@@ -59,13 +59,8 @@ export function ThemeSelector() {
         Theme
       </Label>
       <Select value={activeTheme} onValueChange={setActiveTheme}>
-        <SelectTrigger
-          id="theme-selector"
-          className="justify-start *:data-[slot=select-value]:w-12"
-        >
-          <span className="text-muted-foreground hidden sm:block">
-            Select a theme:
-          </span>
+        <SelectTrigger id="theme-selector" className="justify-start *:data-[slot=select-value]:w-12">
+          <span className="text-muted-foreground hidden sm:block">Select a theme:</span>
           <span className="text-muted-foreground block sm:hidden">Theme</span>
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>

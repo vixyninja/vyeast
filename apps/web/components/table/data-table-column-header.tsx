@@ -1,24 +1,18 @@
-"use client";
+'use client';
 
-import {
-  CaretSortIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  Cross2Icon,
-} from "@radix-ui/react-icons";
-import type { Column } from "@tanstack/react-table";
+import {CaretSortIcon, ChevronDownIcon, ChevronUpIcon, Cross2Icon} from '@radix-ui/react-icons';
+import type {Column} from '@tanstack/react-table';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@walgo-hub/ui/components/ui/dropdown-menu";
-import { cn } from "@walgo-hub/ui/lib/utils";
-import { EyeOff } from "lucide-react";
+} from '@walgo-hub/ui/components/ui/dropdown-menu';
+import {cn} from '@walgo-hub/ui/lib/utils';
+import {EyeOff} from 'lucide-react';
 
-interface DataTableColumnHeaderProps<TData, TValue>
-  extends React.ComponentProps<typeof DropdownMenuTrigger> {
+interface DataTableColumnHeaderProps<TData, TValue> extends React.ComponentProps<typeof DropdownMenuTrigger> {
   column: Column<TData, TValue>;
   title: string;
 }
@@ -37,16 +31,15 @@ export function DataTableColumnHeader<TData, TValue>({
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "hover:bg-accent focus:ring-ring data-[state=open]:bg-accent [&_svg]:text-muted-foreground -ml-1.5 flex h-8 items-center gap-1.5 rounded-md px-2 py-1.5 focus:ring-1 focus:outline-none [&_svg]:size-4 [&_svg]:shrink-0",
+          'hover:bg-accent focus:ring-ring data-[state=open]:bg-accent [&_svg]:text-muted-foreground -ml-1.5 flex h-8 items-center gap-1.5 rounded-md px-2 py-1.5 focus:ring-1 focus:outline-none [&_svg]:size-4 [&_svg]:shrink-0',
           className,
         )}
-        {...props}
-      >
+        {...props}>
         {title}
         {column.getCanSort() &&
-          (column.getIsSorted() === "desc" ? (
+          (column.getIsSorted() === 'desc' ? (
             <ChevronDownIcon />
-          ) : column.getIsSorted() === "asc" ? (
+          ) : column.getIsSorted() === 'asc' ? (
             <ChevronUpIcon />
           ) : (
             <CaretSortIcon />
@@ -57,25 +50,20 @@ export function DataTableColumnHeader<TData, TValue>({
           <>
             <DropdownMenuCheckboxItem
               className="[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto"
-              checked={column.getIsSorted() === "asc"}
-              onClick={() => column.toggleSorting(false)}
-            >
+              checked={column.getIsSorted() === 'asc'}
+              onClick={() => column.toggleSorting(false)}>
               <ChevronUpIcon />
               Asc
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
               className="[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto"
-              checked={column.getIsSorted() === "desc"}
-              onClick={() => column.toggleSorting(true)}
-            >
+              checked={column.getIsSorted() === 'desc'}
+              onClick={() => column.toggleSorting(true)}>
               <ChevronDownIcon />
               Desc
             </DropdownMenuCheckboxItem>
             {column.getIsSorted() && (
-              <DropdownMenuItem
-                className="[&_svg]:text-muted-foreground pl-2"
-                onClick={() => column.clearSorting()}
-              >
+              <DropdownMenuItem className="[&_svg]:text-muted-foreground pl-2" onClick={() => column.clearSorting()}>
                 <Cross2Icon />
                 Reset
               </DropdownMenuItem>
@@ -86,8 +74,7 @@ export function DataTableColumnHeader<TData, TValue>({
           <DropdownMenuCheckboxItem
             className="[&_svg]:text-muted-foreground relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto"
             checked={!column.getIsVisible()}
-            onClick={() => column.toggleVisibility(false)}
-          >
+            onClick={() => column.toggleVisibility(false)}>
             <EyeOff />
             Hide
           </DropdownMenuCheckboxItem>

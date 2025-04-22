@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { navItems } from "@/constants/data";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import {navItems} from '@/constants/data';
+import {useMediaQuery} from '@/hooks/use-media-query';
 import {
   IconBell,
   IconChevronRight,
@@ -10,17 +10,9 @@ import {
   IconCreditCard,
   IconLogout,
   IconPhotoUp,
-} from "@tabler/icons-react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@walgo-hub/ui/components/ui/avatar";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@walgo-hub/ui/components/ui/collapsible";
+} from '@tabler/icons-react';
+import {Avatar, AvatarFallback, AvatarImage} from '@walgo-hub/ui/components/ui/avatar';
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@walgo-hub/ui/components/ui/collapsible';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +21,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@walgo-hub/ui/components/ui/dropdown-menu";
+} from '@walgo-hub/ui/components/ui/dropdown-menu';
 import {
   Sidebar,
   SidebarContent,
@@ -44,36 +36,36 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarRail,
-} from "@walgo-hub/ui/components/ui/sidebar";
-import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import * as React from "react";
-import { Icons } from "../icons";
-import { OrgSwitcher } from "../org-switcher";
+} from '@walgo-hub/ui/components/ui/sidebar';
+import {signOut, useSession} from 'next-auth/react';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import * as React from 'react';
+import {Icons} from '../icons';
+import {OrgSwitcher} from '../org-switcher';
 
 export const company = {
-  name: "Acme Inc",
+  name: 'Acme Inc',
   logo: IconPhotoUp,
-  plan: "Enterprise",
+  plan: 'Enterprise',
 };
 
 const tenants = [
-  { id: "1", name: "Acme Inc" },
-  { id: "2", name: "Beta Corp" },
-  { id: "3", name: "Gamma Ltd" },
+  {id: '1', name: 'Acme Inc'},
+  {id: '2', name: 'Beta Corp'},
+  {id: '3', name: 'Gamma Ltd'},
 ];
 
 export default function AppSidebar() {
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   const pathname = usePathname();
-  const { isOpen } = useMediaQuery();
+  const {isOpen} = useMediaQuery();
 
   const handleSwitchTenant = (_tenantId: string) => {
     // Tenant switching functionality would be implemented here
   };
 
-  const activeTenant = tenants[0] ?? { id: "", name: "" };
+  const activeTenant = tenants[0] ?? {id: '', name: ''};
 
   React.useEffect(() => {
     // Side effects based on sidebar state changes
@@ -82,11 +74,7 @@ export default function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <OrgSwitcher
-          tenants={tenants}
-          defaultTenant={activeTenant}
-          onTenantSwitch={handleSwitchTenant}
-        />
+        <OrgSwitcher tenants={tenants} defaultTenant={activeTenant} onTenantSwitch={handleSwitchTenant} />
       </SidebarHeader>
       <SidebarContent className="overflow-x-hidden">
         <SidebarGroup>
@@ -95,18 +83,10 @@ export default function AppSidebar() {
             {navItems.map((item) => {
               const Icon = item.icon ? Icons[item.icon] : Icons.logo;
               return item?.items && item?.items?.length > 0 ? (
-                <Collapsible
-                  key={item.title}
-                  asChild
-                  defaultOpen={item.isActive}
-                  className="group/collapsible"
-                >
+                <Collapsible key={item.title} asChild defaultOpen={item.isActive} className="group/collapsible">
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton
-                        tooltip={item.title}
-                        isActive={pathname === item.url}
-                      >
+                      <SidebarMenuButton tooltip={item.title} isActive={pathname === item.url}>
                         {item.icon && <Icon />}
                         <span>{item.title}</span>
                         <IconChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -116,10 +96,7 @@ export default function AppSidebar() {
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton
-                              asChild
-                              isActive={pathname === subItem.url}
-                            >
+                            <SidebarMenuSubButton asChild isActive={pathname === subItem.url}>
                               <Link href={subItem.url}>
                                 <span>{subItem.title}</span>
                               </Link>
@@ -132,11 +109,7 @@ export default function AppSidebar() {
                 </Collapsible>
               ) : (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    tooltip={item.title}
-                    isActive={pathname === item.url}
-                  >
+                  <SidebarMenuButton asChild tooltip={item.title} isActive={pathname === item.url}>
                     <Link href={item.url}>
                       <Icon />
                       <span>{item.title}</span>
@@ -155,24 +128,16 @@ export default function AppSidebar() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton
                   size="lg"
-                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-                >
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                   <Avatar className="h-8 w-8 rounded-lg">
-                    <AvatarImage
-                      src={session?.user?.image || ""}
-                      alt={session?.user?.name || ""}
-                    />
+                    <AvatarImage src={session?.user?.image || ''} alt={session?.user?.name || ''} />
                     <AvatarFallback className="rounded-lg">
-                      {session?.user?.name?.slice(0, 2)?.toUpperCase() || "CN"}
+                      {session?.user?.name?.slice(0, 2)?.toUpperCase() || 'CN'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-semibold">
-                      {session?.user?.name || ""}
-                    </span>
-                    <span className="truncate text-xs">
-                      {session?.user?.email || ""}
-                    </span>
+                    <span className="truncate font-semibold">{session?.user?.name || ''}</span>
+                    <span className="truncate text-xs">{session?.user?.email || ''}</span>
                   </div>
                   <IconChevronsDown className="ml-auto size-4" />
                 </SidebarMenuButton>
@@ -181,28 +146,18 @@ export default function AppSidebar() {
                 className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
                 side="bottom"
                 align="end"
-                sideOffset={4}
-              >
+                sideOffset={4}>
                 <DropdownMenuLabel className="p-0 font-normal">
                   <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                     <Avatar className="h-8 w-8 rounded-lg">
-                      <AvatarImage
-                        src={session?.user?.image || ""}
-                        alt={session?.user?.name || ""}
-                      />
+                      <AvatarImage src={session?.user?.image || ''} alt={session?.user?.name || ''} />
                       <AvatarFallback className="rounded-lg">
-                        {session?.user?.name?.slice(0, 2)?.toUpperCase() ||
-                          "CN"}
+                        {session?.user?.name?.slice(0, 2)?.toUpperCase() || 'CN'}
                       </AvatarFallback>
                     </Avatar>
                     <div className="grid flex-1 text-left text-sm leading-tight">
-                      <span className="truncate font-semibold">
-                        {session?.user?.name || ""}
-                      </span>
-                      <span className="truncate text-xs">
-                        {" "}
-                        {session?.user?.email || ""}
-                      </span>
+                      <span className="truncate font-semibold">{session?.user?.name || ''}</span>
+                      <span className="truncate text-xs"> {session?.user?.email || ''}</span>
                     </div>
                   </div>
                 </DropdownMenuLabel>

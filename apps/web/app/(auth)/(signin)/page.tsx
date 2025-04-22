@@ -1,21 +1,18 @@
-import SignInViewPage from "@/features/auth/components/signin-view";
-import { Metadata } from "next";
+import SignInViewPage from '@/features/auth/components/signin-view';
+import {Metadata} from 'next';
 
 export const metadata: Metadata = {
-  title: "Authentication | Sign In",
-  description: "Sign In page for authentication.",
+  title: 'Authentication | Sign In',
+  description: 'Sign In page for authentication.',
 };
 
 export default async function Page() {
   let stars = 3000; // Default value
 
   try {
-    const response = await fetch(
-      "https://api.github.com/repos/kiranism/next-shadcn-dashboard-starter",
-      {
-        next: { revalidate: 3600 },
-      },
-    );
+    const response = await fetch('https://api.github.com/repos/kiranism/next-shadcn-dashboard-starter', {
+      next: {revalidate: 3600},
+    });
 
     if (response.ok) {
       const data = await response.json();

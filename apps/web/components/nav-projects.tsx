@@ -1,11 +1,6 @@
-"use client";
+'use client';
 
-import {
-  IconFolder,
-  IconShare,
-  IconDots,
-  IconTrash,
-} from "@tabler/icons-react";
+import {IconFolder, IconShare, IconDots, IconTrash} from '@tabler/icons-react';
 
 import {
   DropdownMenu,
@@ -13,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@walgo-hub/ui/components/ui/dropdown-menu";
+} from '@walgo-hub/ui/components/ui/dropdown-menu';
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -22,8 +17,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@walgo-hub/ui/components/ui/sidebar";
-import { Icon } from "@/components/icons";
+} from '@walgo-hub/ui/components/ui/sidebar';
+import {Icon} from '@/components/icons';
 
 export function NavProjects({
   projects,
@@ -34,7 +29,7 @@ export function NavProjects({
     icon: Icon;
   }[];
 }) {
-  const { isMobile } = useSidebar();
+  const {isMobile} = useSidebar();
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -57,9 +52,8 @@ export function NavProjects({
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 className="w-48 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
+                side={isMobile ? 'bottom' : 'right'}
+                align={isMobile ? 'end' : 'start'}>
                 <DropdownMenuItem>
                   <IconFolder className="text-muted-foreground mr-2 h-4 w-4" />
                   <span>View Project</span>

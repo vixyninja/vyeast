@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { useCallbackRef } from "@/hooks/use-callback-ref";
+import {useCallbackRef} from '@/hooks/use-callback-ref';
 
 /**
  * @see https://github.com/radix-ui/primitives/blob/main/packages/react/use-controllable-state/src/useControllableState.tsx
@@ -14,11 +14,7 @@ type UseControllableStateParams<T> = {
 
 type SetStateFn<T> = (prevState?: T) => T;
 
-function useControllableState<T>({
-  prop,
-  defaultProp,
-  onChange = () => {},
-}: UseControllableStateParams<T>) {
+function useControllableState<T>({prop, defaultProp, onChange = () => {}}: UseControllableStateParams<T>) {
   const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({
     defaultProp,
     onChange,
@@ -27,28 +23,23 @@ function useControllableState<T>({
   const value = isControlled ? prop : uncontrolledProp;
   const handleChange = useCallbackRef(onChange);
 
-  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> =
-    React.useCallback(
-      (nextValue) => {
-        if (isControlled) {
-          const setter = nextValue as SetStateFn<T>;
-          const value =
-            typeof nextValue === "function" ? setter(prop) : nextValue;
-          if (value !== prop) handleChange(value as T);
-        } else {
-          setUncontrolledProp(nextValue);
-        }
-      },
-      [isControlled, prop, setUncontrolledProp, handleChange],
-    );
+  const setValue: React.Dispatch<React.SetStateAction<T | undefined>> = React.useCallback(
+    (nextValue) => {
+      if (isControlled) {
+        const setter = nextValue as SetStateFn<T>;
+        const value = typeof nextValue === 'function' ? setter(prop) : nextValue;
+        if (value !== prop) handleChange(value as T);
+      } else {
+        setUncontrolledProp(nextValue);
+      }
+    },
+    [isControlled, prop, setUncontrolledProp, handleChange],
+  );
 
   return [value, setValue] as const;
 }
 
-function useUncontrolledState<T>({
-  defaultProp,
-  onChange,
-}: Omit<UseControllableStateParams<T>, "prop">) {
+function useUncontrolledState<T>({defaultProp, onChange}: Omit<UseControllableStateParams<T>, 'prop'>) {
   const uncontrolledState = React.useState<T | undefined>(defaultProp);
   const [value] = uncontrolledState;
   const prevValueRef = React.useRef(value);
@@ -64,4 +55,4 @@ function useUncontrolledState<T>({
   return uncontrolledState;
 }
 
-export { useControllableState };
+export {useControllableState};

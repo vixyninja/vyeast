@@ -1,8 +1,8 @@
-"use client";
-import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import * as React from "react";
+'use client';
+import {DotsHorizontalIcon} from '@radix-ui/react-icons';
+import * as React from 'react';
 
-import { UniqueIdentifier } from "@dnd-kit/core";
+import {UniqueIdentifier} from '@dnd-kit/core';
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -11,26 +11,20 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@walgo-hub/ui/components/ui/alert-dialog";
-import { Button } from "@walgo-hub/ui/components/ui/button";
+} from '@walgo-hub/ui/components/ui/alert-dialog';
+import {Button} from '@walgo-hub/ui/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@walgo-hub/ui/components/ui/dropdown-menu";
-import { Input } from "@walgo-hub/ui/components/ui/input";
-import { toast } from "sonner";
-import { useTaskStore } from "../utils/store";
+} from '@walgo-hub/ui/components/ui/dropdown-menu';
+import {Input} from '@walgo-hub/ui/components/ui/input';
+import {toast} from 'sonner';
+import {useTaskStore} from '../utils/store';
 
-export function ColumnActions({
-  title,
-  id,
-}: {
-  title: string;
-  id: UniqueIdentifier;
-}) {
+export function ColumnActions({title, id}: {title: string; id: UniqueIdentifier}) {
   const [name, setName] = React.useState(title);
   const updateCol = useTaskStore((state) => state.updateCol);
   const removeCol = useTaskStore((state) => state.removeCol);
@@ -46,8 +40,7 @@ export function ColumnActions({
           setIsEditDisable(!editDisable);
           updateCol(id, name);
           toast(`${title} updated to ${name}`);
-        }}
-      >
+        }}>
         <Input
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -70,16 +63,12 @@ export function ColumnActions({
               setTimeout(() => {
                 inputRef.current && inputRef.current?.focus();
               }, 500);
-            }}
-          >
+            }}>
             Rename
           </DropdownMenuItem>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem
-            onSelect={() => setShowDeleteDialog(true)}
-            className="text-red-600"
-          >
+          <DropdownMenuItem onSelect={() => setShowDeleteDialog(true)} className="text-red-600">
             Delete Section
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -87,9 +76,7 @@ export function ColumnActions({
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>
-              Are you sure want to delete column?
-            </AlertDialogTitle>
+            <AlertDialogTitle>Are you sure want to delete column?</AlertDialogTitle>
             <AlertDialogDescription>
               NOTE: All tasks related to this category will also be deleted.
             </AlertDialogDescription>
@@ -100,13 +87,12 @@ export function ColumnActions({
               variant="destructive"
               onClick={() => {
                 // yes, you have to set a timeout
-                setTimeout(() => (document.body.style.pointerEvents = ""), 100);
+                setTimeout(() => (document.body.style.pointerEvents = ''), 100);
 
                 setShowDeleteDialog(false);
                 removeCol(id);
-                toast("This column has been deleted.");
-              }}
-            >
+                toast('This column has been deleted.');
+              }}>
               Delete
             </Button>
           </AlertDialogFooter>

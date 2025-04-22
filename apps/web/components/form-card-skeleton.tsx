@@ -1,9 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@walgo-hub/ui/components/ui/card";
-import { Skeleton } from "@walgo-hub/ui/components/ui/skeleton";
+import {Card, CardContent, CardHeader} from '@walgo-hub/ui/components/ui/card';
+import {Skeleton} from '@walgo-hub/ui/components/ui/skeleton';
 
 export default function FormCardSkeleton() {
   return (

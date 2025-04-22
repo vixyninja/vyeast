@@ -1,20 +1,14 @@
-"use client";
+'use client';
 
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@walgo-hub/ui/components/ui/alert";
-import { IconAlertCircle } from "@tabler/icons-react";
+import {Alert, AlertDescription, AlertTitle} from '@walgo-hub/ui/components/ui/alert';
+import {IconAlertCircle} from '@tabler/icons-react';
 
-export default function OverviewError({ error }: { error: Error }) {
+export default function OverviewError({error}: {error: Error}) {
   return (
     <Alert variant="destructive">
       <IconAlertCircle className="h-4 w-4" />
       <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        Failed to load statistics: {error.message}
-      </AlertDescription>
+      <AlertDescription>Failed to load statistics: {error.message}</AlertDescription>
     </Alert>
   );
 }

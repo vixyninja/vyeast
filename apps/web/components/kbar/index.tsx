@@ -1,19 +1,13 @@
-"use client";
+'use client';
 
-import { navItems } from "@/constants/data";
-import {
-  KBarAnimator,
-  KBarPortal,
-  KBarPositioner,
-  KBarProvider,
-  KBarSearch,
-} from "kbar";
-import { useRouter } from "next/navigation";
-import { useMemo } from "react";
-import RenderResults from "./render-result";
-import useThemeSwitching from "./use-theme-switching";
+import {navItems} from '@/constants/data';
+import {KBarAnimator, KBarPortal, KBarPositioner, KBarProvider, KBarSearch} from 'kbar';
+import {useRouter} from 'next/navigation';
+import {useMemo} from 'react';
+import RenderResults from './render-result';
+import useThemeSwitching from './use-theme-switching';
 
-export default function KBar({ children }: { children: React.ReactNode }) {
+export default function KBar({children}: {children: React.ReactNode}) {
   const router = useRouter();
 
   // These action are for the navigation
@@ -26,13 +20,13 @@ export default function KBar({ children }: { children: React.ReactNode }) {
     return navItems.flatMap((navItem) => {
       // Only include base action if the navItem has a real URL and is not just a container
       const baseAction =
-        navItem.url !== "#"
+        navItem.url !== '#'
           ? {
               id: `${navItem.title.toLowerCase()}Action`,
               name: navItem.title,
               shortcut: navItem.shortcut,
               keywords: navItem.title.toLowerCase(),
-              section: "Navigation",
+              section: 'Navigation',
               subtitle: `Go to ${navItem.title}`,
               perform: () => navigateTo(navItem.url),
             }
@@ -61,7 +55,7 @@ export default function KBar({ children }: { children: React.ReactNode }) {
     </KBarProvider>
   );
 }
-const KBarComponent = ({ children }: { children: React.ReactNode }) => {
+const KBarComponent = ({children}: {children: React.ReactNode}) => {
   useThemeSwitching();
 
   return (

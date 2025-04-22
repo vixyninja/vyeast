@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export function useMediaQuery() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,5 +15,5 @@ export function useMediaQuery() {
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
-  return { isOpen };
+  return {isOpen};
 }

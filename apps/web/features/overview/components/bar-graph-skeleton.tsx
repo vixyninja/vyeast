@@ -1,9 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@walgo-hub/ui/components/ui/card";
-import { Skeleton } from "@walgo-hub/ui/components/ui/skeleton";
+import {Card, CardContent, CardHeader} from '@walgo-hub/ui/components/ui/card';
+import {Skeleton} from '@walgo-hub/ui/components/ui/skeleton';
 
 export function BarGraphSkeleton() {
   return (
@@ -17,8 +13,7 @@ export function BarGraphSkeleton() {
           {[1, 2].map((i) => (
             <div
               key={i}
-              className="relative flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6"
-            >
+              className="relative flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l sm:border-t-0 sm:border-l sm:px-8 sm:py-6">
               <Skeleton className="h-3 w-[80px]" />
               <Skeleton className="h-8 w-[100px] sm:h-10" />
             </div>
@@ -28,7 +23,7 @@ export function BarGraphSkeleton() {
       <CardContent className="px-2 sm:p-6">
         {/* Bar-like shapes */}
         <div className="flex aspect-auto h-[280px] w-full items-end justify-around gap-2 pt-8">
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({length: 12}).map((_, i) => (
             <Skeleton
               key={i}
               className="w-full"
