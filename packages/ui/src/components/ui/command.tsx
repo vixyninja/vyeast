@@ -1,4 +1,4 @@
-import {cn} from '@walgo-hub/ui/lib/utils';
+import {cn} from '@vyeast/ui/lib/utils';
 import {Command as CommandPrimitive} from 'cmdk';
 import {SearchIcon} from 'lucide-react';
 import * as React from 'react';

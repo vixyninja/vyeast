@@ -1,4 +1,4 @@
-import { config } from '@walgo-hub/eslint-config/react-internal';
+import {config} from '@vyeast/eslint-config/react-internal';
 
 /** @type {import("eslint").Linter.Config} */
 export default config;

@@ -1,5 +1,5 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
-import {cn} from '@walgo-hub/ui/lib/utils';
+import {cn} from '@vyeast/ui/lib/utils';
 import * as React from 'react';
 
 function Popover({...props}: React.ComponentProps<typeof PopoverPrimitive.Root>) {

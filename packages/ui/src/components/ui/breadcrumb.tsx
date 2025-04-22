@@ -1,5 +1,5 @@
 import {Slot} from '@radix-ui/react-slot';
-import {cn} from '@walgo-hub/ui/lib/utils';
+import {cn} from '@vyeast/ui/lib/utils';
 import {ChevronRight, MoreHorizontal} from 'lucide-react';
 import * as React from 'react';
 

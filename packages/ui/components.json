@@ -11,11 +11,11 @@
     "prefix": ""
   },
   "aliases": {
-    "components": "@walgo-hub/ui/components",
-    "utils": "@walgo-hub/ui/lib/utils",
-    "ui": "@walgo-hub/ui/components/ui/",
-    "lib": "@walgo-hub/ui/lib",
-    "hooks": "@walgo-hub/ui/hooks"
+    "components": "@vyeast/ui/components",
+    "utils": "@vyeast/ui/lib/utils",
+    "ui": "@vyeast/ui/components/ui/",
+    "lib": "@vyeast/ui/lib",
+    "hooks": "@vyeast/ui/hooks"
   },
   "iconLibrary": "lucide"
 }

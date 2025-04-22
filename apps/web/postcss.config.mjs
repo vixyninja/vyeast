@@ -1,1 +1,1 @@
-export { default } from "@walgo-hub/ui/postcss.config";
+export {default} from '@vyeast/ui/postcss.config';

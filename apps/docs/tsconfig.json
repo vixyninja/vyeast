@@ -1,5 +1,5 @@
 {
-  "extends": "@walgo-hub/typescript-config/nextjs.json",
+  "extends": "@vyeast/typescript-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {

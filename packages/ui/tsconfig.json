@@ -1,12 +1,12 @@
 {
-  "extends": "@walgo-hub/typescript-config/react-library.json",
+  "extends": "@vyeast/typescript-config/react-library.json",
   "include": ["src"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@walgo-hub/ui/*": ["src/*"],
-      "@walgo-hub/ui": ["src"]
+      "@vyeast/ui": ["./src/"],
+      "@vyeast/ui/*": ["./src/*"],
     }
   }
 }

@@ -1,7 +1,1 @@
-export default {
-  plugins: {
-    "@tailwindcss/postcss": {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
+export {default} from '@vyeast/ui/postcss.config';

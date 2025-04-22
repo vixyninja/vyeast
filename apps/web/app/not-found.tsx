@@ -1,8 +1,7 @@
 'use client';
 
 import {useRouter} from 'next/navigation';
-
-import {Button} from '@walgo-hub/ui/components/ui/button';
+import {Button} from '@vyeast/ui';
 
 export default function NotFound() {
   const router = useRouter();

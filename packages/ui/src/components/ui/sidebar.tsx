@@ -1,14 +1,14 @@
 'use client';
 
 import {Slot} from '@radix-ui/react-slot';
-import {Button} from '@walgo-hub/ui/components/ui/button';
-import {Input} from '@walgo-hub/ui/components/ui/input';
-import {Separator} from '@walgo-hub/ui/components/ui/separator';
-import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle} from '@walgo-hub/ui/components/ui/sheet';
-import {Skeleton} from '@walgo-hub/ui/components/ui/skeleton';
-import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from '@walgo-hub/ui/components/ui/tooltip';
-import {useIsMobile} from '@walgo-hub/ui/hooks/use-mobile';
-import {cn} from '@walgo-hub/ui/lib/utils';
+import {Button} from '@vyeast/ui/components/ui/button';
+import {Input} from '@vyeast/ui/components/ui/input';
+import {Separator} from '@vyeast/ui/components/ui/separator';
+import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle} from '@vyeast/ui/components/ui/sheet';
+import {Skeleton} from '@vyeast/ui/components/ui/skeleton';
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from '@vyeast/ui/components/ui/tooltip';
+import {useIsMobile} from '@vyeast/ui/hooks/use-mobile';
+import {cn} from '@vyeast/ui/lib/utils';
 import {VariantProps, cva} from 'class-variance-authority';
 import {PanelLeftIcon} from 'lucide-react';
 import * as React from 'react';

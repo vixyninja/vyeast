@@ -1,21 +1,24 @@
 {
-  "name": "@walgo-hub/ui",
+  "name": "@vyeast/ui",
   "version": "0.0.0",
   "sideEffects": [
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "index.tsx",
+    "postcss.config.mjs"
   ],
+  "main": "./index.tsx",
+  "types": "./index.tsx",
   "exports": {
+    ".": {
+      "types": "./index.tsx",
+      "default": "./index.tsx"
+    },
     "./postcss.config": "./postcss.config.mjs",
-    "./components/*": "./src/components/*.tsx",
-    "./lib/*": "./src/lib/*.ts",
     "./styles/*": "./src/styles/*",
-    "./hooks/*": [
-      "./src/hooks/*.ts",
-      "./src/hooks/*.tsx"
-    ],
     "./index.css": "./dist/index.css"
   },
   "license": "MIT",
@@ -31,8 +34,8 @@
   "devDependencies": {
     "@tailwindcss/cli": "^4.0.17",
     "@types/react": "^19.0.10",
-    "@walgo-hub/eslint-config": "workspace:*",
-    "@walgo-hub/typescript-config": "workspace:*",
+    "@vyeast/eslint-config": "workspace:*",
+    "@vyeast/typescript-config": "workspace:*",
     "eslint": "^9.23.0",
     "typescript": "5.8.2",
     "postcss": "^8.5.3",

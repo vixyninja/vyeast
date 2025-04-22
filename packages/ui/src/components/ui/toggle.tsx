@@ -1,5 +1,5 @@
 import * as TogglePrimitive from '@radix-ui/react-toggle';
-import {cn} from '@walgo-hub/ui/lib/utils';
+import {cn} from '@vyeast/ui/lib/utils';
 import {cva, type VariantProps} from 'class-variance-authority';
 import * as React from 'react';
 

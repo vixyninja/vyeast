@@ -1,5 +1,5 @@
 import './globals.css';
-import '@walgo-hub/ui/styles.css';
+import '@vyeast/ui/index.css';
 import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 
