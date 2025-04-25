@@ -20,10 +20,5 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
-  viteFinal: (config) => {
-    config.build = config.build || {};
-    config.build.chunkSizeWarningLimit = 2000;
-    return config;
-  },
 };
 export default config;
