@@ -1,7 +1,7 @@
 {
   "extends": "@vyeast/typescript-config/react-library.json",
   "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"],
+  "exclude": ["dist", "build", "node_modules", ".storybook", "storybook-static", "stories"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
